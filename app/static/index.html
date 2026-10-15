@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SportsBot — Your AI Sports Companion</title>
+  <meta name="description"
+    content="SportsBot: Ask about live scores, fixtures, player stats, rules, history, and take sports quizzes. Powered by Google Gemini." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <!-- Animated background orbs -->
+  <div class="bg-orb orb-1" aria-hidden="true"></div>
+  <div class="bg-orb orb-2" aria-hidden="true"></div>
+  <div class="bg-orb orb-3" aria-hidden="true"></div>
+
+  <div class="app-shell">
+    <!-- ── Sidebar ── -->
+    <aside class="sidebar" id="sidebar" role="complementary" aria-label="Sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <span class="logo-icon">⚽</span>
+          <span class="logo-text">SportsBot</span>
+        </div>
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">☰</button>
+      </div>
+
+      <nav class="sidebar-nav" aria-label="Quick actions">
+        <p class="nav-label">Quick Actions</p>
+        <button class="nav-btn" id="btnLiveScores" aria-label="Live scores">
+          <span class="nav-icon">📺</span> Live Scores
+        </button>
+        <button class="nav-btn" id="btnFixtures" aria-label="Upcoming fixtures">
+          <span class="nav-icon">📅</span> Upcoming Fixtures
+        </button>
+        <button class="nav-btn" id="btnStandings" aria-label="League standings">
+          <span class="nav-icon">🏆</span> PL Standings
+        </button>
+        <button class="nav-btn" id="btnRules" aria-label="Explain rules">
+          <span class="nav-icon">📖</span> Explain a Rule
+        </button>
+
+        <p class="nav-label" style="margin-top:1.5rem">Quiz Mode</p>
+        <button class="nav-btn quiz-btn" id="btnQuizFootball" aria-label="Football quiz">
+          <span class="nav-icon">🥅</span> Football Quiz
+        </button>
+        <button class="nav-btn quiz-btn" id="btnQuizCricket" aria-label="Cricket quiz">
+          <span class="nav-icon">🏏</span> Cricket Quiz
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <span class="badge">Powered by Gemini</span>
+        <p class="coverage-text">Cricket · Football</p>
+      </div>
+    </aside>
+
+    <!-- ── Main chat area ── -->
+    <main class="chat-area" role="main">
+      <!-- Header -->
+      <header class="chat-header" role="banner">
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">☰</button>
+        <div class="header-info">
+          <h1 class="header-title">SportsBot</h1>
+          <span class="header-status" id="headerStatus">
+            <span class="status-dot"></span> Online
+          </span>
+        </div>
+        <button class="clear-btn" id="clearBtn" aria-label="Clear conversation" title="Clear chat">
+          🗑️
+        </button>
+      </header>
+
+      <!-- Messages -->
+      <section class="messages-container" id="messagesContainer" aria-live="polite" aria-label="Chat messages">
+        <!-- Welcome message injected by JS -->
+      </section>
+
+      <!-- Quiz panel (hidden by default) -->
+      <section class="quiz-panel hidden" id="quizPanel" aria-label="Quiz panel">
+        <div class="quiz-header">
+          <span class="quiz-title" id="quizTitle">Sports Quiz</span>
+          <span class="quiz-progress" id="quizProgress">Q 1 / 5</span>
+          <span class="quiz-score-live" id="quizScoreLive">Score: 0</span>
+        </div>
+        <div class="quiz-question" id="quizQuestion">Loading…</div>
+        <div class="quiz-options" id="quizOptions" role="list"></div>
+      </section>
+
+      <!-- Input area -->
+      <footer class="input-area" role="contentinfo">
+        <div class="input-wrapper">
+          <textarea
+            id="messageInput"
+            class="message-input"
+            placeholder="Ask me about scores, players, rules, or teams…"
+            rows="1"
+            maxlength="2000"
+            aria-label="Message input"
+          ></textarea>
+          <button class="send-btn" id="sendBtn" aria-label="Send message" title="Send (Enter)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+        <p class="disclaimer">SportsBot may make mistakes. Always verify critical stats.</p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
